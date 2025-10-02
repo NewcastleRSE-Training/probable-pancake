@@ -9,6 +9,7 @@ exercises: 10
 source("load_config.R")
 ```
 
+
 ::: questions
 - "What is an HPC system?"
 - "How does an HPC system work?"
