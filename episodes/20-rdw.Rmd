@@ -1,5 +1,5 @@
 ---
-title: Transferring files with remote computers
+title: Using the Research Data Warehouse
 teaching: 15
 exercises: 15
 ---
@@ -8,6 +8,8 @@ exercises: 15
 # Source the external configuration script
 source("load_config.R")
 ```
+
+entire episode to be written, content has been copied from episode 16-transferring-files.Rmd 
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
