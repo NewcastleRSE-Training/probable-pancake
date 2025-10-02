@@ -204,8 +204,8 @@ job was submitted.
 ## Solution
 
 ```bash
-[yourUsername@login1 ~] nano example-job.sh
-[yourUsername@login1 ~] cat example-job.sh
+[yourUsername@cometlogin01(comet) ~] nano example-job.sh
+[yourUsername@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```output

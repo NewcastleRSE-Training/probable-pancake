@@ -63,7 +63,7 @@ scheduler to see how long our job took and what resources were used. We will
 use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
 
 ```bash
-[yourUsername@login1 ~] sacct -u yourUsername
+[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername
 ```
 
 ```output
@@ -86,7 +86,7 @@ To get info about a specific job (for example, 347087), we change command
 slightly.
 
 ```bash
-[yourUsername@login1 ~] sacct -u yourUsername -l -j 347087
+[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername -l -j 347087
 ```
 
 It will show a lot of info; in fact, every single piece of info collected on
@@ -95,7 +95,7 @@ information to `less` to make it easier to view (use the left and right arrow
 keys to scroll through fields).
 
 ```bash
-[yourUsername@login1 ~] sacct -u yourUsername -l -j 347087 | less -S
+[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername -l -j 347087 | less -S
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion

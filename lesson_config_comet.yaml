@@ -3,16 +3,16 @@ local:
   prompt: "[you@laptop:~]$"
   bash_shebang: "#!/usr/bin/env bash"
 
-snippets: NCL_Comet_slurm
+snippets: Comet_HPC_Intro
 baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
 
 remote:
   name: "Introduction to HPC for Comet"
-  host_id: "NCL_Comet"
+  host_id: #"NCL_Comet"
   login: "cometlogin01.comet.hpc.ncl.ac.uk"
   host: "cometlogin01"
   node: "smnode1"
-  location: "comet.hpc.ncl.ac.uk"
+  location: "cluster.hpc-carpentry.org"
   homedir: "/mnt/nfs/home"
   user: "yourUsername"
   prompt: '[yourUsername@cometlogin01(comet) ~]'

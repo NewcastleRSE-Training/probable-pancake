@@ -6,6 +6,7 @@ exercises: 10
 
 
 
+
 ::: questions
 - "What is an HPC system?"
 - "How does an HPC system work?"
@@ -86,10 +87,10 @@ single argument.
 
 Go ahead and open your terminal or graphical SSH client, then log in to the
 cluster using your username and the remote computer you can reach from the
-outside world, cluster.hpc-carpentry.org.
+outside world, comet.hpc.ncl.ac.uk.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
+[you@laptop:~]$ ssh yourUsername@cometlogin01.comet.hpc.ncl.ac.uk
 ```
 
 Remember to replace `yourUsername` with your username or the one
@@ -107,11 +108,11 @@ computer we are logged onto can be checked with the `hostname` command. (You
 may also notice that the current hostname is also part of our prompt!)
 
 ```bash
-[yourUsername@login1 ~] hostname
+[yourUsername@cometlogin01(comet) ~] hostname
 ```
 
 ```output
-login1
+cometlogin01
 ```
 
 ::: challenge
@@ -139,7 +140,7 @@ are you working on?
 Use `pwd` to **p**rint the **w**orking **d**irectory path:
 
 ```bash
-[yourUsername@login1 ~] pwd
+[yourUsername@cometlogin01(comet) ~] pwd
 ```
 
 You can run `ls` to **l**i**s**t the directory contents, though it's
@@ -147,7 +148,7 @@ possible nothing will show up (if no files have been provided). To be sure,
 use the `-a` flag to show hidden files, too.
 
 ```bash
-[yourUsername@login1 ~] ls -a
+[yourUsername@cometlogin01(comet) ~] ls -a
 ```
 
 At a minimum, this will show the current directory as `.`, and the parent
@@ -200,7 +201,7 @@ For example, we can view all of the worker nodes by running the command
 `sinfo`.
 
 ```bash
-[yourUsername@login1 ~] sinfo
+[yourUsername@cometlogin01(comet) ~] sinfo
 ```
 
 
@@ -241,7 +242,7 @@ Note that, if you're logged in to the remote computer cluster, you need to
 log out first. To do so, type `Ctrl+d` or `exit`:
 
 ```bash
-[yourUsername@login1 ~] exit
+[yourUsername@cometlogin01(comet) ~] exit
 [you@laptop:~]$
 ```
 
@@ -284,16 +285,16 @@ Now compare the resources of your computer with those of the head node.
 :::: solution
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cluster.hpc-carpentry.org
-[yourUsername@login1 ~] nproc --all
-[yourUsername@login1 ~] free -m
+[you@laptop:~]$ ssh yourUsername@cometlogin01.comet.hpc.ncl.ac.uk
+[yourUsername@cometlogin01(comet) ~] nproc --all
+[yourUsername@cometlogin01(comet) ~] free -m
 ```
 
 You can get more information about the processors using `lscpu`,
 and a lot of detail about the memory by reading the file `/proc/meminfo`:
 
 ```bash
-[yourUsername@login1 ~] less /proc/meminfo
+[yourUsername@cometlogin01(comet) ~] less /proc/meminfo
 ```
 
 You can also explore the available filesystems using `df` to show **d**isk
@@ -302,7 +303,7 @@ i.e., GB instead of B. The **t**ype flag `-T` shows what kind of filesystem
 each resource is.
 
 ```bash
-[yourUsername@login1 ~] df -Th
+[yourUsername@cometlogin01(comet) ~] df -Th
 ```
 ::::
 :::
@@ -333,7 +334,7 @@ where your jobs will actually run. Try running this command to see
 the name, CPUs and memory available on one of the worker nodes:
 
 ```bash
-[yourUsername@login1 ~] sinfo -o "%n %c %m" | column -t
+[yourUsername@cometlogin01(comet) ~] sinfo -o "%n %c %m" | column -t
 ```
 :::
 

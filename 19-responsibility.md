@@ -264,17 +264,17 @@ data.
 
 Say you have a "data" folder containing 10,000 or so files, a healthy mix of
 small and large ASCII and binary data. Which of the following would be the
-best way to transfer them to HPC Carpentry's Cloud Cluster?
+best way to transfer them to Introduction to HPC for Comet?
 
-1. `scp -r data yourUsername@cluster.hpc-carpentry.org:~/`
-2. `rsync -ra data yourUsername@cluster.hpc-carpentry.org:~/`
-3. `rsync -raz data yourUsername@cluster.hpc-carpentry.org:~/`
+1. `scp -r data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
+2. `rsync -ra data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
+3. `rsync -raz data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
 4. `tar -cvf data.tar data;`
 
-   `rsync -raz data.tar yourUsername@cluster.hpc-carpentry.org:~/`
+   `rsync -raz data.tar yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
 5. `tar -cvzf data.tar.gz data;`
 
-   `rsync -ra data.tar.gz yourUsername@cluster.hpc-carpentry.org:~/`
+   `rsync -ra data.tar.gz yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
 
 :::::::::::::::  solution
 
