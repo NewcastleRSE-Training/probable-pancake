@@ -1,10 +1,12 @@
 ---
-title: Transferring files with remote computers
+title: Using the Research Data Warehouse
 teaching: 15
 exercises: 15
 ---
 
 
+
+entire episode to be written, content has been copied from episode 16-transferring-files.Rmd 
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
