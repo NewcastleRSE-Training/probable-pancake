@@ -3,19 +3,19 @@ local:
   prompt: "[you@laptop:~]$"
   bash_shebang: "#!/usr/bin/env bash"
 
-snippets: HPCC_MagicCastle_slurm
-baseurl: "https://ocaisa.github.io/probable-pancake/"
+snippets: NCL_Comet_slurm
+baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
 
 remote:
-  name: "HPC Carpentry's Cloud Cluster"
-  host_id: #"EPCC_ARCHER2"
-  login: "cluster.hpc-carpentry.org"
-  host: "login1"
+  name: "Introduction to HPC for Comet"
+  host_id: "NCL_Comet"
+  login: "cometlogin01.comet.hpc.ncl.ac.uk"
+  host: "cometlogin01"
   node: "smnode1"
-  location: "cluster.hpc-carpentry.org"
-  homedir: "/home"
+  location: "comet.hpc.ncl.ac.uk"
+  homedir: "/mnt/nfs/home"
   user: "yourUsername"
-  prompt: '[yourUsername@login1 ~]'
+  prompt: '[yourUsername@cometlogin01(comet) ~]'
   prompt_work: #"userid@uan01:/work/ta114/ta114/userid>"
   module_python3: "Python"
   bash_shebang: "#!/bin/bash"

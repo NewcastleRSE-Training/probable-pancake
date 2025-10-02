@@ -1,0 +1,70 @@
+# Fail-safe defaults and implicit schema for lesson configuration files
+---
+snippets: slurm
+baseurl: "https://ocaisa.github.io/probable-pancake/"
+# main_config: "lesson_config.yaml"
+
+# about the Learner's laptop
+local:
+  prompt: "[you@laptop:~]$"                  # command-line prompt
+  shebang: "#!/bin/bash"                     # first line of every shell script
+
+# about the remote/cluster environment
+remote:
+  name: "Example Cluster"                    # Name of the cluster (proper noun)
+  login: "cluster.example.com"               # domain name of the login node
+  host: "head"                               # hostname of the login node
+  node: "node"                               # hostname of a compute node
+  location: "SchedMD"                        # institutional host of the cluster
+  homedir: "/home"                           # parent of home directories
+  user: "userid"                             # stand-in for the username
+  prompt: "[userid@head:~]"                  # command-line prompt
+  prompt_work: "[userid@head:/work/userid]"  # prompt under /work
+  module_python3: "Python"                   # name of the module providing py3
+  shebang: "#!/bin/bash"                     # first line of every shell script
+
+# Commands & flags for the scheduler environment
+sched:
+  name: "Slurm"                              # proper name of the scheduler
+  command:
+    batch:       "sbatch"                    # run later
+    interactive: "srun"                      # run now
+    cancel:      "scancel"                   # don't run
+  queue:
+    test: "debug"
+    prod: "batch"
+  status: "squeue"
+  flag:
+    user: "-u userid"
+    interactive: "--pty bash"
+    histdetail: "-l -j"
+    name: "-J"
+    time: "-t"
+    queue: "-p"
+    nodes: "-N"
+    tasks: "-n"
+  del: "scancel"
+  interactive:
+    command: "srun"
+  info:
+    command: "sinfo"
+  comment: "#SBATCH"
+  hist: "sacct -u userid"
+  hist_filter: ""
+  reservation: ""
+  qos: ""
+  budget: ""
+  project: ""
+
+# submit:
+#   salloc:   obtain a job allocation
+#   sbatch:   submit a batch script for later execution
+#   srun:     obtain an allocation and execute an application
+# account:
+#   sacct:    display accounting data
+# manage:
+#   sbcast:   transfer a file to a job's compute nodes
+#   scancel:  signal jobs/steps
+#   squeue:   view information about jobs
+#   sinfo:    view information about nodes & partitions
+#   scontrol: view & modify state
