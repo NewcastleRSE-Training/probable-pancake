@@ -68,11 +68,11 @@ episodes:
   - 10-hpc-intro.Rmd
   - 11-connecting.Rmd
   - 12-cluster.Rmd
-  - 20-rdw.Rmd
-  - 13-scheduler.Rmd
+    - 13-scheduler.Rmd
   - 14-environment-variables.Rmd
   - 15-modules.Rmd
   - 16-transferring-files.Rmd
+  - 20-rdw.Rmd
   - 21-array.Rmd
   - 17-parallel.Rmd
   - 18-resources.Rmd
