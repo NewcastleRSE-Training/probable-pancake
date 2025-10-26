@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.4.2",
+    "Version": "4.4.1",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -38,7 +38,8 @@
       "NeedsCompilation": "no",
       "Author": "Winston Chang [aut, cre]",
       "Maintainer": "Winston Chang <winston@stdout.org>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "base64enc": {
       "Package": "base64enc",
