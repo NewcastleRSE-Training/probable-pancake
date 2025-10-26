@@ -277,7 +277,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="20-rdw.html">4. Using the Research Data Warehouse</a>
+        <a href="13-scheduler.html">4. Scheduler Fundamentals</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -289,7 +289,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="13-scheduler.html">5. Scheduler Fundamentals</a>
+        <a href="14-environment-variables.html">5. Environment Variables</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -301,7 +301,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="14-environment-variables.html">6. Environment Variables</a>
+        <a href="15-modules.html">6. Accessing software via Modules</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -313,7 +313,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="15-modules.html">7. Accessing software via Modules</a>
+        <a href="16-transferring-files.html">7. Transferring files with remote computers</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -325,7 +325,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="16-transferring-files.html">8. Transferring files with remote computers</a>
+        <a href="20-rdw.html">8. Using the Research Data Warehouse</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -466,21 +466,6 @@ nodes.”</li>
 volume and type (amount of RAM, processor architecture, availability of
 network mounted filesystems, etc.).”</li>
 <li>“Files saved on one node are available on all nodes.”</li>
-</ul></section><section id="20-rdw"><h2 class="section-heading"><a href="20-rdw.html">Using the Research Data Warehouse</a></h2>
-<hr class="half-width">
-<ul>
-<li>
-<code>cp</code> and <code>rsync</code> transfer files between RDW
-and HPC.</li>
-<li>try a dry-run of rsync to avoid accidental duplications or
-deletions</li>
-<li>re-run large rsync commands to confirm success</li>
-<li>output to a log to keep a record</li>
-<li>group permissions are pre-set on RDW can’t be changed from
-linux</li>
-<li>RDW shares should have a pre-set ‘read’ and ‘modify’ group of campus
-users</li>
-<li>?? files on RDW are owned by the user who puts them there</li>
 </ul></section><section id="13-scheduler"><h2 class="section-heading"><a href="13-scheduler.html">Scheduler Fundamentals</a></h2>
 <hr class="half-width">
 <ul>
@@ -516,6 +501,21 @@ internet.</li>
 your computer.</li>
 <li>You can use an SFTP client like FileZilla to transfer files through
 a GUI.</li>
+</ul></section><section id="20-rdw"><h2 class="section-heading"><a href="20-rdw.html">Using the Research Data Warehouse</a></h2>
+<hr class="half-width">
+<ul>
+<li>
+<code>cp</code> and <code>rsync</code> transfer files between RDW
+and HPC.</li>
+<li>try a dry-run of rsync to avoid accidental duplications or
+deletions</li>
+<li>re-run large rsync commands to confirm success</li>
+<li>output to a log to keep a record</li>
+<li>group permissions are pre-set on RDW can’t be changed from
+linux</li>
+<li>RDW shares should have a pre-set ‘read’ and ‘modify’ group of campus
+users</li>
+<li>?? files on RDW are owned by the user who puts them there</li>
 </ul></section><section id="21-array"><h2 class="section-heading"><a href="21-array.html">Parallelising with Array Jobs.</a></h2>
 <hr class="half-width">
 <ul>
