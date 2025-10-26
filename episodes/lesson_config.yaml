@@ -1,17 +1,52 @@
 ---
-# Base config file for snippets #
-# This file is read for default parameters but 
-# if this file specifies a snippet library that
-# contains a valid lesson configuration file
-# the lesson snippets file is used instead
-# this file has been cleared because directives are overridden by the 
-# file specified "snippets" directive
-
-
 local:
+  prompt: "[you@laptop:~]$"
+  bash_shebang: "#!/usr/bin/env bash"
 
-# snippet library - should match a directory under episodes/files/snippets/
 snippets: NCL_Comet_slurm
-
-# base URL for lesson website (?overridden by above?)
 baseurl: "https://NewcastleRSE-Training.github.io/probable-pancake/"
+
+remote:
+  name: "Introduction to HPC for Comet"
+  host_id: "NCL_Comet"
+  login: "cometlogin01.comet.hpc.ncl.ac.uk"
+  host: "cometlogin01"
+  node: "smnode1"
+  location: "comet.hpc.ncl.ac.uk"
+  homedir: "/mnt/nfs/home"
+  user: "yourUsername"
+  prompt: '[yourUsername@cometlogin01(comet) ~]'
+  prompt_work: #"userid@uan01:/work/ta114/ta114/userid>"
+  module_python3: "Python"
+  bash_shebang: "#!/bin/bash"
+
+sched:
+  name: "Slurm"
+  submit:
+    name: "sbatch"
+    options: ""
+  queue:
+    debug: "smnode"
+    testing: "cpubase_bycore_b1"
+  status: "squeue"
+  flag:
+    user: "-u yourUsername"
+    interactive: ""
+    histdetail: "-l -j"
+    name: "-J"
+    time: "-t"
+    queue: "-p"
+    nodes: ""
+    tasks: ""
+  del: "scancel"
+  interactive: "srun"
+  info: "sinfo"
+  comment: "#SBATCH"
+  hist: "sacct -u yourUsername"
+  hist_filter: ""
+  partition: "standard"
+  reservation: "shortqos"
+  qos: "short"
+  budget: "short"
+  project: ""
+main_config: "lesson_config_hpcc.yaml"
