@@ -111,7 +111,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 ```
 
 
@@ -170,7 +170,7 @@ following the `#SBATCH` comment is interpreted as an
 instruction to the scheduler.
 
 Let's illustrate this by example. By default, a job's name is the name of the
-script, but the `-J` option can be used to change the
+script, but the `--job-name=` option can be used to change the
 name of a job. Add an option to the script:
 
 ```bash
@@ -179,7 +179,7 @@ name of a job. Add an option to the script:
 
 ```bash
 #!/bin/bash
-#SBATCH -J hello-world
+#SBATCH --job-name= hello-world
 
 echo -n "This script is running on "
 hostname
@@ -188,7 +188,7 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -261,7 +261,7 @@ hostname
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -282,7 +282,7 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 #!/bin/bash
-#SBATCH -J long_job
+#SBATCH --job-name= long_job
 #SBATCH -t 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
@@ -294,7 +294,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -327,7 +327,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -369,9 +369,9 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
-[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
 ```
 
 Then, cancel them all:

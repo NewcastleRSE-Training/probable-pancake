@@ -375,7 +375,7 @@ python3 --version
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch  python-module.sh
+[user@cometlogin01(comet) ~] sbatch --partition= python-module.sh
 ```
 
 :::::::::::::::::::::::::

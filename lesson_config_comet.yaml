@@ -24,7 +24,7 @@ sched:
   name: "Slurm"
   submit:
     name: "sbatch"
-    options: ""
+    options: "--partition=short_free"
   queue:
     debug: "smnode"
     testing: "cpubase_bycore_b1"
