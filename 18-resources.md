@@ -47,7 +47,7 @@ written up guidance for getting the most out of it.
 
 A convenient way of figuring out the resources required for a job to run
 successfully is to submit a test job, and then ask the scheduler about its
-impact using `sacct -u yourUsername`. You can use this knowledge to set up the
+impact using `sacct -u user`. You can use this knowledge to set up the
 next job with a closer estimate of its load on the system. A good general rule
 is to ask the scheduler for 20% to 30% more time and memory than you expect the
 job to need. This ensures that minor fluctuations in run time or memory use
@@ -60,10 +60,10 @@ finish and free up the resources needed to match what you asked for.
 
 Since we already submitted `amdahl` to run on the cluster, we can query the
 scheduler to see how long our job took and what resources were used. We will
-use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
+use `sacct -u user` to get statistics about `parallel-job.sh`.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername
+[user@cometlogin01(comet) ~] sacct -u user
 ```
 
 ```output
@@ -86,7 +86,7 @@ To get info about a specific job (for example, 347087), we change command
 slightly.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername -l -j 347087
+[user@cometlogin01(comet) ~] sacct -u user -l -j 347087
 ```
 
 It will show a lot of info; in fact, every single piece of info collected on
@@ -95,7 +95,7 @@ information to `less` to make it easier to view (use the left and right arrow
 keys to scroll through fields).
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sacct -u yourUsername -l -j 347087 | less -S
+[user@cometlogin01(comet) ~] sacct -u user -l -j 347087 | less -S
 ```
 
 ::::::::::::::::::::::::::::::::::::::  discussion

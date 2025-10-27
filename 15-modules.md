@@ -77,7 +77,7 @@ you are using.
 To see available software modules, use `module avail`:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module avail
+[user@cometlogin01(comet) ~] module avail
 ```
 
 ```output
@@ -108,7 +108,7 @@ loaded in your environment. If you have no modules loaded, you will see a
 message telling you so
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module list
+[user@cometlogin01(comet) ~] module list
 ```
 
 ```output
@@ -125,13 +125,13 @@ command. `which` looks for programs the same way that Bash does, so we can use
 it to tell us where a particular piece of software is stored.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] which python3
+[user@cometlogin01(comet) ~] which python3
 ```
 
 If the `python3` command was unavailable, we would see output like
 
 ```output
-/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/yourUsername/.local/bin:/home/yourUsername/bin)
+/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user/.local/bin:/home/user/bin)
 ```
 
 Note that this wall of text is really a list, with values separated
@@ -146,8 +146,8 @@ searched the following directories for `python3`, without success:
 /usr/local/sbin
 /usr/sbin
 /opt/puppetlabs/bin
-/home/yourUsername/.local/bin
-/home/yourUsername/bin
+/home/user/.local/bin
+/home/user/bin
 ```
 
 However, in our case we do have an existing `python3` available so we see
@@ -162,8 +162,8 @@ a module to access it.
 We can load the `python3` command with `module load`:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module load Python
-[yourUsername@cometlogin01(comet) ~] which python3
+[user@cometlogin01(comet) ~] module load Python
+[user@cometlogin01(comet) ~] which python3
 ```
 
 ```output
@@ -180,7 +180,7 @@ before giving up and telling us it can't find it. As with all environment
 variables we can print it out using `echo`.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] echo $PATH
+[user@cometlogin01(comet) ~] echo $PATH
 ```
 
 ```output
@@ -193,7 +193,7 @@ ran the `module load` command, it added a directory to the beginning of our
 `$PATH`. Let's examine what's there:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
+[user@cometlogin01(comet) ~] ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
 ```
 
 ```output
@@ -221,7 +221,7 @@ To demonstrate, let's use `module list`. `module list` shows all loaded
 software modules.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module list
+[user@cometlogin01(comet) ~] module list
 ```
 
 ```output
@@ -232,8 +232,8 @@ Currently Loaded Modules:
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module load GROMACS
-[yourUsername@cometlogin01(comet) ~] module list
+[user@cometlogin01(comet) ~] module load GROMACS
+[user@cometlogin01(comet) ~] module list
 ```
 
 ```output
@@ -259,8 +259,8 @@ package), also loaded `GMP/6.2.0-GCCcore-x.y.z` and
 `GROMACS` package.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module unload GROMACS
-[yourUsername@cometlogin01(comet) ~] module list
+[user@cometlogin01(comet) ~] module unload GROMACS
+[user@cometlogin01(comet) ~] module list
 ```
 
 ```output
@@ -285,8 +285,8 @@ not). If we wanted to unload everything at once, we could run `module purge`
 (unloads everything).
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module purge
-[yourUsername@cometlogin01(comet) ~] module list
+[user@cometlogin01(comet) ~] module purge
+[user@cometlogin01(comet) ~] module list
 ```
 
 ```output
@@ -322,7 +322,7 @@ software is loaded.
 Let's examine the output of `module avail` more closely.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] module avail
+[user@cometlogin01(comet) ~] module avail
 ```
 
 ```output
@@ -360,8 +360,8 @@ compute node).
 ## Solution
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] nano python-module.sh
-[yourUsername@cometlogin01(comet) ~] cat python-module.sh
+[user@cometlogin01(comet) ~] nano python-module.sh
+[user@cometlogin01(comet) ~] cat python-module.sh
 ```
 
 ```output
@@ -375,7 +375,7 @@ python3 --version
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  python-module.sh
+[user@cometlogin01(comet) ~] sbatch  python-module.sh
 ```
 
 :::::::::::::::::::::::::

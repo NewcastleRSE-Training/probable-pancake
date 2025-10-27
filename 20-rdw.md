@@ -33,15 +33,15 @@ User installed software should be in your home directory
 Because `/rdw` is a mounted filesystem, we can use `cp` instead of `scp`:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cp file.txt /rdw/03/rse-hpc/training/userid/
-[yourUsername@cometlogin01(comet) ~] cd /rdw/03/rse-hpc/training/userid/
-[yourUsername@cometlogin01(comet) ~] pwd
+[user@cometlogin01(comet) ~] cp file.txt /rdw/03/rse-hpc/training/userid/
+[user@cometlogin01(comet) ~] cd /rdw/03/rse-hpc/training/userid/
+[user@cometlogin01(comet) ~] pwd
 ```
 ```output
 /rdw/03/rse-hpc/training/userid
 ```
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls
+[user@cometlogin01(comet) ~] ls
 ```
 ```output
 file.txt
@@ -60,11 +60,11 @@ Transfer *to* RDW from your work area on Comet
 
 #### Try out a dry run:
 ```bash
-[yourUsername@cometlogin01(comet) ~] cd /nobackup/proj/training/userid/
-[yourUsername@cometlogin01(comet) ~] mkdir TestDir
-[yourUsername@cometlogin01(comet) ~] touch TestDir/testfile1
-[yourUsername@cometlogin01(comet) ~] touch TestDir/testfile2
-[yourUsername@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid --dry-run
+[user@cometlogin01(comet) ~] cd /nobackup/proj/training/userid/
+[user@cometlogin01(comet) ~] mkdir TestDir
+[user@cometlogin01(comet) ~] touch TestDir/testfile1
+[user@cometlogin01(comet) ~] touch TestDir/testfile2
+[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid --dry-run
 ```
 ```output
 sending incremental file list
@@ -78,7 +78,7 @@ total size is 0  speedup is 0.00 (DRY RUN)
 
 #### Run ‘for real’:
 ```bash
-[yourUsername@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid
+[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid
 ```
 ```output
 sending incremental file list
@@ -97,7 +97,7 @@ rsync error: some files/attrs were not transferred (see previous errors) (code 2
 What happened?  `rsync` returned an error. `files/attrs were not transferred `  This is because RDW doesn't 'know' about Comet's groups.  The transfer was successful though! Only the 'group' attribute of the file couldn't be transferred.  RDW has 'trumped' our local permissions and imposed its own standard permissions.  This isn't important, the correct user keeps ownership of the files.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -l TestDir/
+[user@cometlogin01(comet) ~] ls -l TestDir/
 ```
 ```output
 total 0
@@ -106,7 +106,7 @@ total 0
 
 ```
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -l /rdw/03/rse-hpc/training/userid/TestDir/
+[user@cometlogin01(comet) ~] ls -l /rdw/03/rse-hpc/training/userid/TestDir/
 ```
 ```output
 total 33
@@ -124,7 +124,7 @@ For Comet and RDW, replace `-av` with `-rltv`
 
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] rsync -rltv TestDir/ /rdw/03/rse-hpc/training/userid 
+[user@cometlogin01(comet) ~] rsync -rltv TestDir/ /rdw/03/rse-hpc/training/userid 
 ```
 ```output
 sending incremental file list
@@ -142,7 +142,7 @@ Can you spot the difference betweent the 2 previous rsync commands?  Try `ls -l`
 
 :::solution
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -R /rdw/03/rse-hpc/training/userid/
+[user@cometlogin01(comet) ~] ls -R /rdw/03/rse-hpc/training/userid/
 ```
 ```output
 /rdw/03/rse-hpc/training/userid/:

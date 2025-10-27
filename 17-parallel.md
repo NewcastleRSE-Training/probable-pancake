@@ -31,7 +31,7 @@ we have to improve the performance of computational tasks.
 If you disconnected, log back in to the cluster.
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cometlogin01.comet.hpc.ncl.ac.uk
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
 
 ## Install the Amdahl Program
@@ -42,8 +42,8 @@ Move into the extracted directory, then use the Package Installer for Python,
 or `pip`, to install it in your ("user") home directory:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cd amdahl
-[yourUsername@cometlogin01(comet) ~] python3 -m pip install --user .
+[user@cometlogin01(comet) ~] cd amdahl
+[user@cometlogin01(comet) ~] python3 -m pip install --user .
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -76,19 +76,19 @@ then `rsync` it to the cluster, extract, and install:
 
 ```bash
 [you@laptop:~]$ wget -O mpi4py.tar.gz https://github.com/mpi4py/mpi4py/releases/download/3.1.4/mpi4py-3.1.4.tar.gz
-[you@laptop:~]$ scp mpi4py.tar.gz yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:
+[you@laptop:~]$ scp mpi4py.tar.gz user@comet.ncl.ac.uk:
 # or
-[you@laptop:~]$ rsync -avP mpi4py.tar.gz yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:
+[you@laptop:~]$ rsync -avP mpi4py.tar.gz user@comet.ncl.ac.uk:
 ```
 
 ```bash
-[you@laptop:~]$ ssh yourUsername@cometlogin01.comet.hpc.ncl.ac.uk
-[yourUsername@cometlogin01(comet) ~] tar -xvzf mpi4py.tar.gz  # extract the archive
-[yourUsername@cometlogin01(comet) ~] mv mpi4py* mpi4py        # rename the directory
-[yourUsername@cometlogin01(comet) ~] cd mpi4py
-[yourUsername@cometlogin01(comet) ~] python3 -m pip install --user .
-[yourUsername@cometlogin01(comet) ~] cd ../amdahl
-[yourUsername@cometlogin01(comet) ~] python3 -m pip install --user .
+[you@laptop:~]$ ssh user@comet.ncl.ac.uk
+[user@cometlogin01(comet) ~] tar -xvzf mpi4py.tar.gz  # extract the archive
+[user@cometlogin01(comet) ~] mv mpi4py* mpi4py        # rename the directory
+[user@cometlogin01(comet) ~] cd mpi4py
+[user@cometlogin01(comet) ~] python3 -m pip install --user .
+[user@cometlogin01(comet) ~] cd ../amdahl
+[user@cometlogin01(comet) ~] python3 -m pip install --user .
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -109,7 +109,7 @@ To check whether this warning is a problem, use `which` to search for the
 `amdahl` program:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] which amdahl
+[user@cometlogin01(comet) ~] which amdahl
 ```
 
 If the command returns no output, displaying a new prompt, it means the file
@@ -119,15 +119,15 @@ Edit your shell configuration file as follows, then log off the cluster and
 back on again so it takes effect.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] nano ~/.bashrc
-[yourUsername@cometlogin01(comet) ~] tail ~/.bashrc
+[user@cometlogin01(comet) ~] nano ~/.bashrc
+[user@cometlogin01(comet) ~] tail ~/.bashrc
 ```
 
 ```output
 export PATH=${PATH}:${HOME}/.local/bin
 ```
 
-After logging back in to cometlogin01.comet.hpc.ncl.ac.uk, `which` should be able to
+After logging back in to comet.ncl.ac.uk, `which` should be able to
 find `amdahl` without difficulties.
 If you had to load a Python module, load it again.
 
@@ -139,7 +139,7 @@ If you had to load a Python module, load it again.
 Many command-line programs include a "help" message. Try it with `amdahl`:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] amdahl --help
+[user@cometlogin01(comet) ~] amdahl --help
 ```
 
 ```output
@@ -165,8 +165,8 @@ tell us the important flags we might want to use when launching it.
 Create a submission file, requesting one task on a single node, then launch it.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] nano serial-job.sh
-[yourUsername@cometlogin01(comet) ~] cat serial-job.sh
+[user@cometlogin01(comet) ~] nano serial-job.sh
+[user@cometlogin01(comet) ~] cat serial-job.sh
 ```
 
 ```bash
@@ -184,14 +184,14 @@ amdahl
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch serial-job.sh
+[user@cometlogin01(comet) ~] sbatch serial-job.sh
 ```
 
 As before, use the Slurm status commands to check whether your job
 is running and when it ends:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 Use `ls` to locate the output file. The `-t` flag sorts in
@@ -205,7 +205,7 @@ The cluster output should be written to a file in the folder you launched the
 job from. For example,
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -213,7 +213,7 @@ slurm-347087.out  serial-job.sh  amdahl  README.md  LICENSE.txt
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat slurm-347087.out
+[user@cometlogin01(comet) ~] cat slurm-347087.out
 ```
 
 ```output
@@ -285,9 +285,9 @@ by examining the environment variables set when the job is launched.
 Let's modify the job script to request more cores and use the MPI run-time.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cp serial-job.sh parallel-job.sh
-[yourUsername@cometlogin01(comet) ~] nano parallel-job.sh
-[yourUsername@cometlogin01(comet) ~] cat parallel-job.sh
+[user@cometlogin01(comet) ~] cp serial-job.sh parallel-job.sh
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
 ```
 
 ```bash
@@ -311,13 +311,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -325,7 +325,7 @@ slurm-347178.out  parallel-job.sh  slurm-347087.out  serial-job.sh  amdahl  READ
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat slurm-347178.out
+[user@cometlogin01(comet) ~] cat slurm-347178.out
 ```
 
 ```output
@@ -404,8 +404,8 @@ Let's run one more job, so we can see how close to a straight line our `amdahl`
 code gets.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] nano parallel-job.sh
-[yourUsername@cometlogin01(comet) ~] cat parallel-job.sh
+[user@cometlogin01(comet) ~] nano parallel-job.sh
+[user@cometlogin01(comet) ~] cat parallel-job.sh
 ```
 
 ```bash
@@ -429,13 +429,13 @@ from how we submitted the serial job: all the parallel settings are in the
 batch file rather than the command line.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch parallel-job.sh
+[user@cometlogin01(comet) ~] sbatch parallel-job.sh
 ```
 
 As before, use the status commands to check when your job runs.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] ls -t
+[user@cometlogin01(comet) ~] ls -t
 ```
 
 ```output
@@ -443,7 +443,7 @@ slurm-347271.out  parallel-job.sh  slurm-347178.out  slurm-347087.out  serial-jo
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat slurm-347178.out
+[user@cometlogin01(comet) ~] cat slurm-347178.out
 ```
 
 ```output
@@ -492,7 +492,7 @@ S(t_{n}) = \frac{t_{1}}{t_{n}}
 $$
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
+[user@cometlogin01(comet) ~] for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
 ```
 
 | Number of CPUs | Speedup       | Ideal |

@@ -266,15 +266,15 @@ Say you have a "data" folder containing 10,000 or so files, a healthy mix of
 small and large ASCII and binary data. Which of the following would be the
 best way to transfer them to Introduction to HPC for Comet?
 
-1. `scp -r data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
-2. `rsync -ra data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
-3. `rsync -raz data yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
+1. `scp -r data user@comet.ncl.ac.uk:~/`
+2. `rsync -ra data user@comet.ncl.ac.uk:~/`
+3. `rsync -raz data user@comet.ncl.ac.uk:~/`
 4. `tar -cvf data.tar data;`
 
-   `rsync -raz data.tar yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
+   `rsync -raz data.tar user@comet.ncl.ac.uk:~/`
 5. `tar -cvzf data.tar.gz data;`
 
-   `rsync -ra data.tar.gz yourUsername@cometlogin01.comet.hpc.ncl.ac.uk:~/`
+   `rsync -ra data.tar.gz user@comet.ncl.ac.uk:~/`
 
 :::::::::::::::  solution
 

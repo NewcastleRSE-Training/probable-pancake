@@ -68,7 +68,7 @@ manner. Our shell script will have three parts:
   name of the machine the script is run on.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] nano example-job.sh
+[user@cometlogin01(comet) ~] nano example-job.sh
 ```
 
 ```bash
@@ -89,7 +89,7 @@ Run the script. Does it execute on the cluster or just our login node?
 ## Solution
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] bash example-job.sh
+[user@cometlogin01(comet) ~] bash example-job.sh
 ```
 
 ```output
@@ -111,7 +111,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
 ```
 
 
@@ -123,10 +123,10 @@ And that's all we need to do to submit a job. Our work is done -- now the
 scheduler takes over and tries to run the job for us. While the job is waiting
 to run, it goes into a list of jobs called the *queue*. To check on our job's
 status, we check the queue using the command
-`squeue -u yourUsername`.
+`squeue -u user`.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 ```output
@@ -174,7 +174,7 @@ script, but the `-J` option can be used to change the
 name of a job. Add an option to the script:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```bash
@@ -188,8 +188,8 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 ```output
@@ -248,7 +248,7 @@ for it on the cluster.
 ## Solution
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```bash
@@ -261,7 +261,7 @@ hostname
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -277,7 +277,7 @@ killed. Let's use wall time as an example. We will request 1 minute of
 wall time, and attempt to run a job for two minutes.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat example-job.sh
+[user@cometlogin01(comet) ~] cat example-job.sh
 ```
 
 ```bash
@@ -294,12 +294,12 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] cat slurm-12.out
+[user@cometlogin01(comet) ~] cat slurm-12.out
 ```
 
 ```output
@@ -327,8 +327,8 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 ```output
@@ -343,9 +343,9 @@ return of your command prompt indicates that the request to cancel the job was
 successful.
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] scancel 38759
+[user@cometlogin01(comet) ~] scancel 38759
 # It might take a minute for the job to disappear from the queue...
-[yourUsername@cometlogin01(comet) ~] squeue -u yourUsername
+[user@cometlogin01(comet) ~] squeue -u user
 ```
 
 ```output
@@ -369,15 +369,15 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
-[yourUsername@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
+[user@cometlogin01(comet) ~] sbatch  example-job.sh
 ```
 
 Then, cancel them all:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] scancel -u yourUsername
+[user@cometlogin01(comet) ~] scancel -u user
 ```
 
 :::::::::::::::::::::::::
@@ -401,7 +401,7 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] srun hostname
+[user@cometlogin01(comet) ~] srun hostname
 ```
 
 ```output
@@ -414,7 +414,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] srun -n 2 echo "This job will use 2 CPUs."
+[user@cometlogin01(comet) ~] srun -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -433,7 +433,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[yourUsername@cometlogin01(comet) ~] srun --pty bash
+[user@cometlogin01(comet) ~] srun --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
@@ -446,7 +446,7 @@ logged on. You can also verify this with `hostname`.
 
 To see graphical output inside your jobs, you need to use X11 forwarding. To
 connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y yourUsername@cometlogin01.comet.hpc.ncl.ac.uk`.
+the `ssh` command, e.g., `ssh -Y user@comet.ncl.ac.uk`.
 
 To demonstrate what happens when you create a graphics window on the remote
 node, use the `xeyes` command. A relatively adorable pair of eyes should pop
