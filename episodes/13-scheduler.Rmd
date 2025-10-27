@@ -114,7 +114,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 ```
 
 ```{r, child=paste(snippets, '/scheduler/basic-job-script.Rmd', sep=''), eval=TRUE}
@@ -180,7 +180,8 @@ name of a job. Add an option to the script:
 
 ```bash
 `r config$remote$bash_shebang`
-`r config$sched$comment` `r config$sched$flag$name` hello-world
+`r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
+`r config$sched$comment` `r config$sched$flag$name`hello-world
 
 echo -n "This script is running on "
 hostname
@@ -189,7 +190,7 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -254,6 +255,8 @@ for it on the cluster.
 
 ```bash
 `r config$remote$bash_shebang`
+`r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
+`r config$sched$comment` `r config$sched$flag$name`long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
 
 echo -n "This script is running on "
@@ -262,7 +265,7 @@ hostname
 ```
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 ```
 
 Why are the `r config$sched$name` runtime and `sleep` time not identical?
@@ -283,7 +286,8 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 `r config$remote$bash_shebang`
-`r config$sched$comment` `r config$sched$flag$name` long_job
+`r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
+`r config$sched$comment` `r config$sched$flag$name`long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
@@ -295,7 +299,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -328,7 +332,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -370,9 +374,9 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
 ```
 
 Then, cancel them all:
@@ -402,7 +406,7 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` hostname
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$queue``r config$sched$partition` hostname
 ```
 
 ```output
@@ -415,7 +419,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` -n 2 echo "This job will use 2 CPUs."
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$queue``r config$sched$partition` -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -434,7 +438,7 @@ went wrong with a previous job. Fortunately, `r config$sched$name` makes it
 easy to start an interactive job with ``r config$sched$interactive``:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` --pty bash
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$queue``r config$sched$partition` --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
