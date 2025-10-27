@@ -519,7 +519,7 @@ identified as being available to perform the work.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -591,16 +591,17 @@ to change the name of a job. Add an option to the script:</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#SBATCH --job-name= hello-world</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"This script is running on "</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=hello-world</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"This script is running on "</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
 </div>
 <p>Submit the job and monitor its status:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -672,16 +673,18 @@ then submit a job for it on the cluster.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#SBATCH -t 00:01 # timeout in HH:MM</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"This script is running on "</span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="fu">sleep</span> 20 <span class="co"># time in seconds</span></span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=long_job</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#SBATCH -t 00:01 # timeout in HH:MM</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"This script is running on "</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">sleep</span> 20 <span class="co"># time in seconds</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span></code></pre>
 </div>
 <p>Why are the Slurm runtime and <code>sleep</code> time not
 identical?</p>
@@ -701,19 +704,20 @@ minute of wall time, and attempt to run a job for two minutes.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#SBATCH --job-name= long_job</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co">#SBATCH -t 00:01 # timeout in HH:MM</span></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This script is running on ... "</span></span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">sleep</span> 240 <span class="co"># time in seconds</span></span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=long_job</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co">#SBATCH -t 00:01 # timeout in HH:MM</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This script is running on ... "</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="fu">sleep</span> 240 <span class="co"># time in seconds</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
 </div>
 <p>Submit the job and wait for it to finish. Once it is has finished,
 check the log file.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb19">
@@ -748,7 +752,7 @@ it runs long enough for you to cancel it before it is killed!).</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -800,9 +804,9 @@ yourself). Note that you can only delete your own jobs.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span>example-job.sh</span></code></pre>
 </div>
 <p>Then, cancel them all:</p>
 <div class="codewrapper sourceCode" id="cb26">
@@ -832,7 +836,7 @@ with <code>Ctrl-c</code>.)</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun hostname</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">--partition</span><span class="op">=</span>short_free hostname</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -847,7 +851,7 @@ command:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">--partition</span><span class="op">=</span>short_free <span class="at">-n</span> 2 echo <span class="st">"This job will use 2 CPUs."</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -866,7 +870,7 @@ makes it easy to start an interactive job with <code>srun</code>:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">--pty</span> bash</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> srun <span class="at">--partition</span><span class="op">=</span>short_free <span class="at">--pty</span> bash</span></code></pre>
 </div>
 <p>You should be presented with a bash prompt. Note that the prompt will
 likely change to reflect your new location, in this case the compute
