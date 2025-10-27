@@ -337,7 +337,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="21-array.html">9. Parallelising with Array Jobs.</a>
+        <a href="17-parallel.html">9. Running a parallel job</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -349,7 +349,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="17-parallel.html">10. Running a parallel job</a>
+        <a href="21-array.html">10. Parallelising with Array Jobs.</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -1299,7 +1299,7 @@ neighbors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> It’s a Beautiful Day in the Neighborhood </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The deepest layer should differ: <code>user</code> is uniquely yours.
 Are there differences in the path at higher levels?</p>
@@ -1434,7 +1434,7 @@ computer cluster, you need to log out first. To do so, type
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>There are several ways to do this. Most operating systems have a
 graphical system monitor, like the Windows Task Manager. More detailed
@@ -1482,7 +1482,7 @@ node.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1731,7 +1731,7 @@ node?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1757,7 +1757,7 @@ identified as being available to perform the work.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1820,8 +1820,8 @@ special comment is <code>#SBATCH</code>. Anything following the
 <code>#SBATCH</code> comment is interpreted as an instruction to the
 scheduler.</p>
 <p>Let’s illustrate this by example. By default, a job’s name is the
-name of the script, but the <code>-J</code> option can be used to change
-the name of a job. Add an option to the script:</p>
+name of the script, but the <code>--job-name=</code> option can be used
+to change the name of a job. Add an option to the script:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1831,7 +1831,7 @@ the name of a job. Add an option to the script:</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#SBATCH -J hello-world</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#SBATCH --job-name= hello-world</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">"This script is running on "</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">hostname</span></span></code></pre>
@@ -1840,7 +1840,7 @@ the name of a job. Add an option to the script:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1904,7 +1904,7 @@ then submit a job for it on the cluster.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1924,7 +1924,7 @@ then submit a job for it on the cluster.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
 </div>
 <p>Why are the Slurm runtime and <code>sleep</code> time not
 identical?</p>
@@ -1944,7 +1944,7 @@ minute of wall time, and attempt to run a job for two minutes.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#SBATCH -J long_job</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#SBATCH --job-name= long_job</span></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co">#SBATCH -t 00:01 # timeout in HH:MM</span></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This script is running on ... "</span></span>
@@ -1956,7 +1956,7 @@ check the log file.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb19">
@@ -1993,7 +1993,7 @@ it runs long enough for you to cancel it before it is killed!).</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> squeue <span class="at">-u</span> user</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -2039,15 +2039,15 @@ yourself). Note that you can only delete your own jobs.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>First, submit a trio of jobs:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  example-job.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> example-job.sh</span></code></pre>
 </div>
 <p>Then, cancel them all:</p>
 <div class="codewrapper sourceCode" id="cb26">
@@ -2367,7 +2367,7 @@ command. Do you notice any difference?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The <code>TIME_STYLE</code> variable is not <em>seen</em> by
 <code>ls</code> until is exported, at which point it is used by
@@ -2404,7 +2404,7 @@ prints out the location from which the job was submitted.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2904,7 +2904,7 @@ login node is loaded on a compute node).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2926,7 +2926,7 @@ python3 --version</code></pre>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch  python-module.sh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">[user@cometlogin01</span><span class="er">(</span><span class="ex">comet</span><span class="kw">)</span> <span class="ex">~]</span> sbatch <span class="at">--partition</span><span class="op">=</span> python-module.sh</span></code></pre>
 </div>
 </div>
 </div>
@@ -3926,148 +3926,6 @@ users</li>
 </div>
 </div>
 </div>
-</section></section><section id="aio-21-array"><p>Content from <a href="21-array.html">Parallelising with Array Jobs.</a></p>
-<hr>
-<p>Last updated on 2025-10-27 |
-
-        <a href="https://github.com/ocaisa/probable-pancake/edit/main/episodes/21-array.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>Stuff</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Stuff</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>Frequently, research problems that use computing can outgrow the
-capabilities of the desktop or laptop computer where they started:</p>
-<ul>
-<li>A statistics student wants to cross-validate a model. This involves
-running the model 1000 times — but each run takes an hour. Running the
-model on a laptop will take over a month! In this research problem,
-final results are calculated after all 1000 models have run, but
-typically only one model is run at a time (in <strong>serial</strong>)
-on the laptop. Since each of the 1000 runs is independent of all others,
-and given enough computers, it’s theoretically possible to run them all
-at once (in <strong>parallel</strong>).</li>
-<li>A genomics researcher has been using small datasets of sequence
-data, but soon will be receiving a new type of sequencing data that is
-10 times as large. It’s already challenging to open the datasets on a
-computer — analyzing these larger datasets will probably crash it. In
-this research problem, the calculations required might be impossible to
-parallelize, but a computer with <strong>more memory</strong> would be
-required to analyze the much larger future data set.</li>
-<li>An engineer is using a fluid dynamics package that has an option to
-run in parallel. So far, this option was not used on a desktop. In going
-from 2D to 3D simulations, the simulation time has more than tripled. It
-might be useful to take advantage of that option or feature. In this
-research problem, the calculations in each region of the simulation are
-largely independent of calculations in other regions of the simulation.
-It’s possible to run each region’s calculations simultaneously (in
-<strong>parallel</strong>), communicate selected results to adjacent
-regions as needed, and repeat the calculations to converge on a final
-set of results. In moving from a 2D to a 3D model, <strong>both the
-amount of data and the amount of calculations increases
-greatly</strong>, and it’s theoretically possible to distribute the
-calculations across multiple computers communicating over a shared
-network.</li>
-</ul>
-<p>In all these cases, access to more (and larger) computers is needed.
-Those computers should be usable at the same time, <strong>solving many
-researchers’ problems in parallel</strong>.</p>
-<section><h2 class="section-heading" id="jargon-busting-presentation">Jargon Busting Presentation<a class="anchor" aria-label="anchor" href="#jargon-busting-presentation"></a>
-</h2>
-<hr class="half-width">
-<p>Open the <a href="../files/jargon.html#p1">HPC Jargon Buster</a> in a
-new tab. To present the content, press <code>C</code> to open a
-<strong>c</strong>lone in a separate window, then press <code>P</code>
-to toggle <strong>p</strong>resentation mode.</p>
-<div id="ive-never-used-a-server-have-i" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="ive-never-used-a-server-have-i" class="callout-inner">
-<h3 class="callout-title">I’ve Never Used a Server, Have I?</h3>
-<div class="callout-content">
-<p>Take a minute and think about which of your daily interactions with a
-computer may require a remote server or even cluster to provide you with
-results.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">
-  Some Ideas
-  </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<ul>
-<li>Checking email: your computer (possibly in your pocket) contacts a
-remote machine, authenticates, and downloads a list of new messages; it
-also uploads changes to message status, such as whether you read, marked
-as junk, or deleted the message. Since yours is not the only account,
-the mail server is probably one of many in a data center.</li>
-<li>Searching for a phrase online involves comparing your search term
-against a massive database of all known sites, looking for matches. This
-“query” operation can be straightforward, but building that database is
-a <a href="https://en.wikipedia.org/wiki/MapReduce" class="external-link">monumental task</a>!
-Servers are involved at every step.</li>
-<li>Searching for directions on a mapping website involves connecting
-your (A) starting and (B) end points by <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" class="external-link">traversing a
-graph</a> in search of the “shortest” path by distance, time, expense,
-or another metric. Converting a map into the right form is relatively
-simple, but calculating all the possible routes between A and B is
-expensive.</li>
-</ul>
-<p>Checking email could be serial: your machine connects to one server
-and exchanges data. Searching by querying the database for your search
-term (or endpoints) could also be serial, in that one machine receives
-your query and returns the result. However, assembling and storing the
-full database is far beyond the capability of any one machine.
-Therefore, these functions are served in parallel by a large, <a href="https://en.wikipedia.org/wiki/Hyperscale_computing" class="external-link">“hyperscale”</a>
-collection of servers working together.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Stuff</li>
-</ul>
-</div>
-</div>
-</div>
 </section></section><section id="aio-17-parallel"><p>Content from <a href="17-parallel.html">Running a parallel job</a></p>
 <hr>
 <p>Last updated on 2025-10-27 |
@@ -4282,16 +4140,17 @@ launch it.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#SBATCH -J solo-job</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#SBATCH -p cpubase_bycore_b1</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="ex">module</span> load Python</span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co"># Execute the task</span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="ex">amdahl</span></span></code></pre>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=serial</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="ex">module</span> load Python</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="ex">amdahl</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4313,7 +4172,7 @@ output?</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Read the Job Output </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The cluster output should be written to a file in the folder you
 launched the job from. For example,</p>
@@ -4421,18 +4280,19 @@ run-time.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#SBATCH -J parallel-job</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#SBATCH -p cpubase_bycore_b1</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#SBATCH -n 4</span></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
-<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
-<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="ex">module</span> load Python</span>
-<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
-<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co"># Execute the task</span></span>
-<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=parallel</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="ex">module</span> load Python</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
 </div>
 <p>Then submit your job. Note that the submission command has not really
 changed from how we submitted the serial job: all the parallel settings
@@ -4490,7 +4350,7 @@ does that mean it finished in ¼ the time?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The parallel job did take <em>less</em> time: 11 seconds is better
 than 30! But it is only a 2.7× improvement, not 4×.</p>
@@ -4551,18 +4411,19 @@ our <code>amdahl</code> code gets.</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co">#SBATCH -J parallel-job</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co">#SBATCH -p cpubase_bycore_b1</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co">#SBATCH -n 8</span></span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="ex">module</span> load Python</span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
-<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="co"># Execute the task</span></span>
-<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co">#SBATCH --partition=short_free</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co">#SBATCH --job-name=parallel</span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co">#SBATCH --tasks=1</span></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=8</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="ex">module</span> load Python</span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
 </div>
 <p>Then submit your job. Note that the submission command has not really
 changed from how we submitted the serial job: all the parallel settings
@@ -4712,6 +4573,148 @@ parallel hardware.</li>
 <li>The queuing system facilitates executing parallel tasks.</li>
 <li>Performance improvements from parallel execution do not scale
 linearly.</li>
+</ul>
+</div>
+</div>
+</div>
+</section></section><section id="aio-21-array"><p>Content from <a href="21-array.html">Parallelising with Array Jobs.</a></p>
+<hr>
+<p>Last updated on 2025-10-27 |
+
+        <a href="https://github.com/ocaisa/probable-pancake/edit/main/episodes/21-array.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 20 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>Stuff</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Stuff</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Frequently, research problems that use computing can outgrow the
+capabilities of the desktop or laptop computer where they started:</p>
+<ul>
+<li>A statistics student wants to cross-validate a model. This involves
+running the model 1000 times — but each run takes an hour. Running the
+model on a laptop will take over a month! In this research problem,
+final results are calculated after all 1000 models have run, but
+typically only one model is run at a time (in <strong>serial</strong>)
+on the laptop. Since each of the 1000 runs is independent of all others,
+and given enough computers, it’s theoretically possible to run them all
+at once (in <strong>parallel</strong>).</li>
+<li>A genomics researcher has been using small datasets of sequence
+data, but soon will be receiving a new type of sequencing data that is
+10 times as large. It’s already challenging to open the datasets on a
+computer — analyzing these larger datasets will probably crash it. In
+this research problem, the calculations required might be impossible to
+parallelize, but a computer with <strong>more memory</strong> would be
+required to analyze the much larger future data set.</li>
+<li>An engineer is using a fluid dynamics package that has an option to
+run in parallel. So far, this option was not used on a desktop. In going
+from 2D to 3D simulations, the simulation time has more than tripled. It
+might be useful to take advantage of that option or feature. In this
+research problem, the calculations in each region of the simulation are
+largely independent of calculations in other regions of the simulation.
+It’s possible to run each region’s calculations simultaneously (in
+<strong>parallel</strong>), communicate selected results to adjacent
+regions as needed, and repeat the calculations to converge on a final
+set of results. In moving from a 2D to a 3D model, <strong>both the
+amount of data and the amount of calculations increases
+greatly</strong>, and it’s theoretically possible to distribute the
+calculations across multiple computers communicating over a shared
+network.</li>
+</ul>
+<p>In all these cases, access to more (and larger) computers is needed.
+Those computers should be usable at the same time, <strong>solving many
+researchers’ problems in parallel</strong>.</p>
+<section><h2 class="section-heading" id="jargon-busting-presentation">Jargon Busting Presentation<a class="anchor" aria-label="anchor" href="#jargon-busting-presentation"></a>
+</h2>
+<hr class="half-width">
+<p>Open the <a href="../files/jargon.html#p1">HPC Jargon Buster</a> in a
+new tab. To present the content, press <code>C</code> to open a
+<strong>c</strong>lone in a separate window, then press <code>P</code>
+to toggle <strong>p</strong>resentation mode.</p>
+<div id="ive-never-used-a-server-have-i" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="ive-never-used-a-server-have-i" class="callout-inner">
+<h3 class="callout-title">I’ve Never Used a Server, Have I?</h3>
+<div class="callout-content">
+<p>Take a minute and think about which of your daily interactions with a
+computer may require a remote server or even cluster to provide you with
+results.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Some Ideas
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<ul>
+<li>Checking email: your computer (possibly in your pocket) contacts a
+remote machine, authenticates, and downloads a list of new messages; it
+also uploads changes to message status, such as whether you read, marked
+as junk, or deleted the message. Since yours is not the only account,
+the mail server is probably one of many in a data center.</li>
+<li>Searching for a phrase online involves comparing your search term
+against a massive database of all known sites, looking for matches. This
+“query” operation can be straightforward, but building that database is
+a <a href="https://en.wikipedia.org/wiki/MapReduce" class="external-link">monumental task</a>!
+Servers are involved at every step.</li>
+<li>Searching for directions on a mapping website involves connecting
+your (A) starting and (B) end points by <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" class="external-link">traversing a
+graph</a> in search of the “shortest” path by distance, time, expense,
+or another metric. Converting a map into the right form is relatively
+simple, but calculating all the possible routes between A and B is
+expensive.</li>
+</ul>
+<p>Checking email could be serial: your machine connects to one server
+and exchanges data. Searching by querying the database for your search
+term (or endpoints) could also be serial, in that one machine receives
+your query and returns the result. However, assembling and storing the
+full database is far beyond the capability of any one machine.
+Therefore, these functions are served in parallel by a large, <a href="https://en.wikipedia.org/wiki/Hyperscale_computing" class="external-link">“hyperscale”</a>
+collection of servers working together.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>Stuff</li>
 </ul>
 </div>
 </div>
@@ -5029,7 +5032,7 @@ node?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Building software, creating directories, and unpacking software are
 common and acceptable &gt; tasks for the login node: options #2
@@ -5239,7 +5242,7 @@ Comet?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
