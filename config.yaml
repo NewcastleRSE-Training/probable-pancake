@@ -73,8 +73,8 @@ episodes:
   - 15-modules.Rmd
   - 16-transferring-files.Rmd
   - 20-rdw.Rmd
-  - 21-array.Rmd
   - 17-parallel.Rmd
+  - 21-array.Rmd
   - 18-resources.Rmd
   - 19-responsibility.Rmd
 

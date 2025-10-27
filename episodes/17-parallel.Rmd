@@ -174,10 +174,11 @@ Create a submission file, requesting one task on a single node, then launch it.
 
 ```bash
 `r config$remote$bash_shebang`
-`r config$sched$comment` `r config$sched$flag$name` solo-job
-`r config$sched$comment` `r config$sched$flag$queue` `r config$sched$queue$testing`
-`r config$sched$comment` -N 1
-`r config$sched$comment` -n 1
+`r config$sched$comment` --partition=default_free
+`r config$sched$comment` --job-name=`r config$sched$name`
+`r config$sched$comment` --nodes=1
+`r config$sched$comment` --tasks=1
+`r config$sched$comment` --cpus-per-task=1
 
 # Load the computing environment we need
 module load `r config$remote$module_python3`
@@ -295,10 +296,11 @@ Let's modify the job script to request more cores and use the MPI run-time.
 
 ```bash
 `r config$remote$bash_shebang`
-`r config$sched$comment` `r config$sched$flag$name` parallel-job
-`r config$sched$comment` `r config$sched$flag$queue` `r config$sched$queue$testing`
-`r config$sched$comment` -N 1
-`r config$sched$comment` -n 4
+`r config$sched$comment` --partition=default_free
+`r config$sched$comment` --job-name=parallel-job
+`r config$sched$comment` --nodes=1
+`r config$sched$comment` --tasks=1
+`r config$sched$comment` --cpus-per-task=4
 
 # Load the computing environment we need
 # (mpi4py and numpy are in SciPy-bundle)
@@ -413,10 +415,10 @@ code gets.
 
 ```bash
 `r config$remote$bash_shebang`
-`r config$sched$comment` `r config$sched$flag$name` parallel-job
-`r config$sched$comment` `r config$sched$flag$queue` `r config$sched$queue$testing`
-`r config$sched$comment` -N 1
-`r config$sched$comment` -n 8
+`r config$sched$comment` --partition=default_free
+`r config$sched$comment` --job-name=parallel-job
+`r config$sched$comment` --tasks=1
+`r config$sched$comment` --cpus-per-task=8
 
 # Load the computing environment we need
 # (mpi4py and numpy are in SciPy-bundle)
