@@ -111,7 +111,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 ```
 
 
@@ -179,7 +179,8 @@ name of a job. Add an option to the script:
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name= hello-world
+#SBATCH --partition=short_free
+#SBATCH --job-name=hello-world
 
 echo -n "This script is running on "
 hostname
@@ -188,7 +189,7 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -253,6 +254,8 @@ for it on the cluster.
 
 ```bash
 #!/bin/bash
+#SBATCH --partition=short_free
+#SBATCH --job-name=long_job
 #SBATCH -t 00:01 # timeout in HH:MM
 
 echo -n "This script is running on "
@@ -261,7 +264,7 @@ hostname
 ```
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 ```
 
 Why are the Slurm runtime and `sleep` time not identical?
@@ -282,7 +285,8 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name= long_job
+#SBATCH --partition=short_free
+#SBATCH --job-name=long_job
 #SBATCH -t 00:01 # timeout in HH:MM
 
 echo "This script is running on ... "
@@ -294,7 +298,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -327,7 +331,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 [user@cometlogin01(comet) ~] squeue -u user
 ```
 
@@ -369,9 +373,9 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
-[user@cometlogin01(comet) ~] sbatch --partition= example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
+[user@cometlogin01(comet) ~] sbatch --partition=example-job.sh
 ```
 
 Then, cancel them all:
@@ -401,7 +405,7 @@ exits. Let's demonstrate this by running the `hostname` command with
 job with `Ctrl-c`.)
 
 ```bash
-[user@cometlogin01(comet) ~] srun hostname
+[user@cometlogin01(comet) ~] srun --partition=short_free hostname
 ```
 
 ```output
@@ -414,7 +418,7 @@ these options are specified on the command-line when starting a job. To submit
 a job that uses 2 CPUs for instance, we could use the following command:
 
 ```bash
-[user@cometlogin01(comet) ~] srun -n 2 echo "This job will use 2 CPUs."
+[user@cometlogin01(comet) ~] srun --partition=short_free -n 2 echo "This job will use 2 CPUs."
 ```
 
 ```output
@@ -433,7 +437,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[user@cometlogin01(comet) ~] srun --pty bash
+[user@cometlogin01(comet) ~] srun --partition=short_free --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
