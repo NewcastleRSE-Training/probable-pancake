@@ -114,7 +114,7 @@ a compute node which the queuing system has identified as being
 available to perform the work.
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options``r config$sched$partition` example-job.sh
 ```
 
 ```{r, child=paste(snippets, '/scheduler/basic-job-script.Rmd', sep=''), eval=TRUE}
@@ -190,7 +190,7 @@ hostname
 Submit the job and monitor its status:
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -215,7 +215,7 @@ The following are several key resource requests:
 - `--ntasks=<ntasks>` or `-n <ntasks>`: How many CPU cores does your job need,
   in total?
 
-- `--time <days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
+- `--time=<days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
   How much real-world time (walltime) will your job take to run? The `<days>`
   part can be omitted.
 
@@ -265,7 +265,7 @@ hostname
 ```
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
 ```
 
 Why are the `r config$sched$name` runtime and `sleep` time not identical?
@@ -299,7 +299,7 @@ Submit the job and wait for it to finish. Once it is has finished, check the
 log file.
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -332,7 +332,7 @@ its job number (remember to change the walltime so that it runs long enough for
 you to cancel it before it is killed!).
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
@@ -374,9 +374,9 @@ Try submitting multiple jobs and then cancelling them all.
 First, submit a trio of jobs:
 
 ```bash
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
-`r config$remote$prompt` `r config$sched$submit$name` `r config$sched$submit$options`example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
+`r config$remote$prompt` `r config$sched$submit$name` example-job.sh
 ```
 
 Then, cancel them all:
