@@ -6,8 +6,6 @@ exercises: 15
 
 
 
-entire episode to be written, content has been copied from episode 16-transferring-files.Rmd 
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Understand how to use Newcastle University's Research Data Warehouse (aka, RDW and Campus Filestore) with Comet HPC
@@ -17,6 +15,7 @@ entire episode to be written, content has been copied from episode 16-transferri
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - How do I transfer files to (and from) the cluster?
+- What is the best way to back up research data?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -243,8 +242,13 @@ rsync -rltv --inplace --itemize-changes --progress --stats  --size-only /nobacku
 - try a dry-run of rsync to avoid accidental duplications or deletions
 - re-run large rsync commands to confirm success
 - output to a log to keep a record
-- group permissions are pre-set on RDW can't be changed from linux
-- RDW shares should have a pre-set 'read' and 'modify' group of campus users
-- ?? files on RDW are owned by the user who puts them there
+- group permissions on RDW can't be changed from linux
+- RDW shares have a pre-set 'modify' group of campus users
+- some RDW shares have a pre-set 'read' group of campus users
+- RDW has a roll-back feature in case of accidents
+
+Find out more about where to store data on Comet:
+https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=started:filesystems
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
