@@ -376,6 +376,9 @@ completeness.
 With `scp`, a trailing slash on the target directory is optional, and has no effect.
 A trailing slash on a source directory is important for other commands, like `rsync`.
 
+
+<!-- commented out rsync and Filezilla because rsync is introduced in RDW section and rsync is difficult if not impossible from an off-campus laptop
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## A Note on `rsync`
@@ -493,6 +496,8 @@ hosting the files and use `scp` or `rsync` to transfer over to the other. This
 will be more efficient than using FileZilla (or related applications) that
 would copy from the source to your local machine, then to the destination
 machine.
+
+-->
 
 [git-swc]: https://swcarpentry.github.io/git-novice/
 [rsync]: https://rsync.samba.org/
