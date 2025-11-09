@@ -284,10 +284,18 @@ exists and is a file, the file is overwritten with the contents of
 `local_file`; if it does not exist, it is assumed to be a destination filename
 for `local_file`.
 
+:::::::::::::::::::::::::::::::::::: callout
+## Using a proxy server
+
+If the hpc system is accessed via a proxy server, an additional option is needed for ssh and scp commands:
+`-oProxyJump=user@proxy`
+
+::::::::::::::::::::::::::::::::::::
+
 Upload the lesson material to your remote home directory like so:
 
 ```bash
-[you@laptop:~]$ scp amdahl.tar.gz user@comet.ncl.ac.uk:
+[you@laptop:~]$ scp -oProxyJump=user@unix.ncl.ac.uk amdahl.tar.gz user@comet.ncl.ac.uk:
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
