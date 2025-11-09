@@ -325,6 +325,7 @@ To connect to Comet, it is necessary to connect first to unix.ncl.ac.uk (aka "fi
 ```
 ::::::::::::::::::::::::::
 
+When you are already connected to an institutional network, it is usually possible to connect in one step.
 ```bash
 [you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
