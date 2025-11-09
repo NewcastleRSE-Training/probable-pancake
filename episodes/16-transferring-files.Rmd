@@ -226,11 +226,13 @@ amdahl/requirements.txt
 amdahl/setup.py
 ```
 
+<!-- 
 If you give `amdahl.tar.gz` as the filename in the above command, `tar` will
 update the existing tarball with any changes you made to the files.
 That would mean adding the new `amdahl` folder to the *existing* folder
 (`hpc-carpentry-amdahl-46c9b4b`) inside the tarball, doubling the size of the
 archive!
+comment -->
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
