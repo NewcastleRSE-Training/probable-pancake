@@ -697,11 +697,25 @@ copied inside the folder; if it exists and is a file, the file is
 overwritten with the contents of <code>local_file</code>; if it does not
 exist, it is assumed to be a destination filename for
 <code>local_file</code>.</p>
+<div id="using-a-proxy-server" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="using-a-proxy-server" class="callout-inner">
+<h3 class="callout-title">Using a proxy server</h3>
+<div class="callout-content">
+<p>If the hpc system is accessed via a proxy server, an additional
+option is needed for ssh and scp commands:
+<code>-oProxyJump=user@proxy</code></p>
+</div>
+</div>
+</div>
 <p>Upload the lesson material to your remote home directory like so:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp <span class="at">-oProxyJump</span><span class="op">=</span>user@unix.ncl.ac.uk amdahl.tar.gz user@comet.ncl.ac.uk:</span></code></pre>
 </div>
 <div id="why-not-download-on-introduction-to-hpc-for-comet-directly" class="callout challenge">
 <div class="callout-square">
