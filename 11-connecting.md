@@ -315,6 +315,16 @@ Go ahead and open your terminal or graphical SSH client, then log in to the
 cluster. Replace `user` with your username or the one
 supplied by the instructors.
 
+:::::::::::::::::::::::::: callout
+## Connecting via a proxy
+To connect to Comet, it is necessary to connect first to unix.ncl.ac.uk (aka "finan")
+
+```bash
+[you@laptop:~]$ ssh user@unix.ncl.ac.uk
+[user@finan ~]$ ssh user@comet.ncl.ac.uk
+```
+::::::::::::::::::::::::::
+
 ```bash
 [you@laptop:~]$ ssh user@comet.ncl.ac.uk
 ```
