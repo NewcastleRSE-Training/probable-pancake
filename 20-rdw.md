@@ -134,7 +134,7 @@ For Comet and RDW, replace `-av` with `-rltv`
 
 
 ```bash
-[user@cometlogin01(comet) ~] rsync -rltv TestDir/ /rdw/04/rse-training/user 
+[user@cometlogin01(comet) ~] rsync -rltv TestDir /rdw/04/rse-training/user/ 
 ```
 ```output
 sending incremental file list
