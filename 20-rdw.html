@@ -393,8 +393,6 @@
 
         
 
-<p>entire episode to be written, content has been copied from episode
-16-transferring-files.Rmd</p>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -403,6 +401,7 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul><li>How do I transfer files to (and from) the cluster?</li>
+<li>What is the best way to back up research data?</li>
 </ul></div>
 </div>
 </div>
@@ -597,7 +596,7 @@ Try <code>ls -l</code> on the destination.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -677,7 +676,7 @@ data from Comet to RDW?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -729,7 +728,7 @@ ticket with NUIT for help with rollback.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Try out a dry run:</p>
 <div class="codewrapper sourceCode" id="cb20">
@@ -772,12 +771,12 @@ and HPC.</li>
 deletions</li>
 <li>re-run large rsync commands to confirm success</li>
 <li>output to a log to keep a record</li>
-<li>group permissions are pre-set on RDW can’t be changed from
-linux</li>
-<li>RDW shares should have a pre-set ‘read’ and ‘modify’ group of campus
-users</li>
-<li>?? files on RDW are owned by the user who puts them there</li>
-</ul></div>
+<li>group permissions on RDW can’t be changed from linux</li>
+<li>RDW shares have a pre-set ‘modify’ group of campus users</li>
+<li>some RDW shares have a pre-set ‘read’ group of campus users</li>
+<li>RDW has a roll-back feature in case of accidents</li>
+</ul><p>Find out more about where to store data on Comet: <a href="https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=started:filesystems" class="external-link uri">https://hpc.researchcomputing.ncl.ac.uk/dokuwiki/doku.php?id=started:filesystems</a></p>
+</div>
 </div>
 </div>
 </div>
