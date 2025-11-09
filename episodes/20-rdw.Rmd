@@ -36,17 +36,25 @@ User installed software should be in your home directory
 Because `/rdw` is a mounted filesystem, we can use `cp` instead of `scp`:
 
 ```bash
+`r config$remote$prompt` pwd
+```
+```output
+/mnt/nfs/home/`r config$remote$user`
+```
+
+```bash
+`r config$remote$prompt` touch file.txt
 `r config$remote$prompt` ls /rdw/04/rse-training/
 `r config$remote$prompt` mkdir /rdw/04/rse-training/`r config$remote$user`
 `r config$remote$prompt` cp file.txt /rdw/04/rse-training/`r config$remote$user`/
 `r config$remote$prompt` cd /rdw/04/rse-training/`r config$remote$user`/
-`r config$remote$prompt` pwd
+[user@cometlogin02(comet) rse-training]$ pwd
 ```
 ```output
 /rdw/04/rse-training/`r config$remote$user`
 ```
 ```bash
-`r config$remote$prompt` ls
+[user@cometlogin02(comet) rse-training]$ ls
 ```
 ```output
 file.txt
