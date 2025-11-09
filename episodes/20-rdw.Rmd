@@ -137,7 +137,7 @@ For Comet and RDW, replace `-av` with `-rltv`
 
 
 ```bash
-`r config$remote$prompt` rsync -rltv TestDir /rdw/04/rse-training/`r config$remote$user/` 
+`r config$remote$prompt` rsync -rltv TestDir /rdw/04/rse-training/`r config$remote$user`/ 
 ```
 ```output
 sending incremental file list
