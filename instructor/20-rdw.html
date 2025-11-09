@@ -683,12 +683,33 @@ data from Comet to RDW?</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[user@login01</span> ~]$ rsync <span class="at">-rltv</span> testDir/ /rdw/04/rse-training/user</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">[user@login01</span> ~]$ rsync <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--size-only</span> DataDir /rdw/04/rse-training/user/</span></code></pre>
 </div>
-<p>The <code>-a</code> option preserves permissions, this is why we saw
-group modification errors above. For Comet and RDW, replace
-<code>-av</code> with <code>-rltv</code><br><code>-r</code> = recurse through subdirectories<br><code>-l</code> = copy symlinks<br><code>-t</code> = preserve timestamps<br><code>-v</code> = verbose</p>
+<p>–inplace - saves resources by not creating temporary files –size-only
+- saves time by only checking whether a file’s size has changed (and not
+its last-modified time)</p>
 </div>
+</div>
+</div>
+</div>
+<div id="large-transfer-to-rdw" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="large-transfer-to-rdw" class="callout-inner">
+<h3 class="callout-title">Large Transfer to RDW<em>
+(continued)</em>
+</h3>
+<div class="callout-content">
+<p>see <code>man rsync</code> and <a href="https://rsync.samba.org/" class="external-link uri">https://rsync.samba.org/</a> for more examples –delete is an
+option that is very useful for tidying up when files have been
+duplicated. However it should be used with care!<br>
+Perhaps a collaborator has placed additional files in the directory you
+are syncing to.<br>
+Use –dry-run –progress –stats to check before you run Accidental
+deletions on RDW can be rolled back using Windows File Explorer. Log a
+ticket with NUIT for help with rollback.</p>
 </div>
 </div>
 </div>
@@ -715,18 +736,17 @@ group modification errors above. For Comet and RDW, replace
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">--dry-run</span> <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--itemize-changes</span> <span class="at">--progress</span> <span class="at">--stats</span> <span class="at">--whole-file</span> <span class="at">--size-only</span> /nobackup/myusername/source /rdw/path/to/my/share/destination/ <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> /home/myusername/meaningful-log-name.log1</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">--dry-run</span> <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--itemize-changes</span> <span class="at">--progress</span> <span class="at">--stats</span>  <span class="at">--size-only</span> /nobackup/myusername/source /rdw/path/to/my/share/destination/ <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> /home/myusername/meaningful-log-name.log1</span></code></pre>
 </div>
 <p>Run ‘for real’:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--itemize-changes</span> <span class="at">--progress</span> <span class="at">--stats</span> <span class="at">--whole-file</span> <span class="at">--size-only</span> /nobackup/myusername/source /rdw/path/to/my/share/destination/ <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> /home/myusername/meaningful-log-name.log2</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-rltv</span> <span class="at">--inplace</span> <span class="at">--itemize-changes</span> <span class="at">--progress</span> <span class="at">--stats</span>  <span class="at">--size-only</span> /nobackup/myusername/source /rdw/path/to/my/share/destination/ <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">|</span> <span class="fu">tee</span> /home/myusername/meaningful-log-name.log2</span></code></pre>
 </div>
 <ul><li>
-<code>--inplace --whole-file --size-only</code> speed up transfer
-and prevent rsync filling up space with a large temporary
-directory<br></li>
+<code>--inplace  --size-only</code> speed up transfer and prevent
+rsync filling up space with a large temporary directory<br></li>
 <li>
 <code>--itemize-changes --progress --stats</code> for more
 informative output<br></li>
