@@ -33,12 +33,14 @@ User installed software should be in your home directory
 Because `/rdw` is a mounted filesystem, we can use `cp` instead of `scp`:
 
 ```bash
-[user@cometlogin01(comet) ~] cp file.txt /rdw/03/rse-hpc/training/userid/
-[user@cometlogin01(comet) ~] cd /rdw/03/rse-hpc/training/userid/
+[user@cometlogin01(comet) ~] ls /rdw/04/rse-training/
+[user@cometlogin01(comet) ~] mkdir /rdw/04/rse-training/user
+[user@cometlogin01(comet) ~] cp file.txt /rdw/04/rse-training/user/
+[user@cometlogin01(comet) ~] cd /rdw/04/rse-training/user/
 [user@cometlogin01(comet) ~] pwd
 ```
 ```output
-/rdw/03/rse-hpc/training/userid
+/rdw/04/rse-training/user
 ```
 ```bash
 [user@cometlogin01(comet) ~] ls
@@ -60,11 +62,11 @@ Transfer *to* RDW from your work area on Comet
 
 #### Try out a dry run:
 ```bash
-[user@cometlogin01(comet) ~] cd /nobackup/proj/training/userid/
+[user@cometlogin01(comet) ~] cd /nobackup/proj/training/user/
 [user@cometlogin01(comet) ~] mkdir TestDir
 [user@cometlogin01(comet) ~] touch TestDir/testfile1
 [user@cometlogin01(comet) ~] touch TestDir/testfile2
-[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid --dry-run
+[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/04/rse-training/user --dry-run
 ```
 ```output
 sending incremental file list
@@ -78,17 +80,17 @@ total size is 0  speedup is 0.00 (DRY RUN)
 
 #### Run ‘for real’:
 ```bash
-[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/03/rse-hpc/training/userid
+[user@cometlogin01(comet) ~] rsync -av TestDir /rdw/04/rse-training/user
 ```
 ```output
 sending incremental file list
-created directory /rdw/03/rse-hpc/training/userid
-rsync: chgrp "/rdw/03/rse-hpc/training/userid/TestDir" failed: Invalid argument (22)
+created directory /rdw/04/rse-training/user
+rsync: chgrp "/rdw/04/rse-training/user/TestDir" failed: Invalid argument (22)
 TestDir/
 TestDir/testfile1
 TestDir/testfile2
-rsync: chgrp "/rdw/03/rse-hpc/training/userid/TestDir/.testfile1.ofeRqX" failed: Invalid argument (22)
-rsync: chgrp "/rdw/03/rse-hpc/training/userid/TestDir/.testfile2.fS1m6j" failed: Invalid argument (22)
+rsync: chgrp "/rdw/04/rse-training/user/TestDir/.testfile1.ofeRqX" failed: Invalid argument (22)
+rsync: chgrp "/rdw/04/rse-training/user/TestDir/.testfile2.fS1m6j" failed: Invalid argument (22)
 
 sent 197 bytes  received 415 bytes  408.00 bytes/sec
 total size is 0  speedup is 0.00
@@ -101,17 +103,17 @@ What happened?  `rsync` returned an error. `files/attrs were not transferred `  
 ```
 ```output
 total 0
--rw------- 1 userid comet_training 0 Mar 11 20:06 testfile1
--rw------- 1 userid comet_training 0 Mar 11 20:06 testfile2
+-rw------- 1 user comet_training 0 Mar 11 20:06 testfile1
+-rw------- 1 user comet_training 0 Mar 11 20:06 testfile2
 
 ```
 ```bash
-[user@cometlogin01(comet) ~] ls -l /rdw/03/rse-hpc/training/userid/TestDir/
+[user@cometlogin01(comet) ~] ls -l /rdw/04/rse-training/user/TestDir/
 ```
 ```output
 total 33
--rwxrwx--- 1 userid domainusers 0 Mar 11 20:10 testfile1
--rwxrwx--- 1 userid domainusers 0 Mar 11 20:10 testfile2
+-rwxrwx--- 1 user domainusers 0 Mar 11 20:10 testfile1
+-rwxrwx--- 1 user domainusers 0 Mar 11 20:10 testfile2
 ```
 It’s still easier to read output without errors that we have to ignore, so let’s remove that error.
 
@@ -124,7 +126,7 @@ For Comet and RDW, replace `-av` with `-rltv`
 
 
 ```bash
-[user@cometlogin01(comet) ~] rsync -rltv TestDir/ /rdw/03/rse-hpc/training/userid 
+[user@cometlogin01(comet) ~] rsync -rltv TestDir/ /rdw/04/rse-training/user 
 ```
 ```output
 sending incremental file list
@@ -142,13 +144,13 @@ Can you spot the difference betweent the 2 previous rsync commands?  Try `ls -l`
 
 :::solution
 ```bash
-[user@cometlogin01(comet) ~] ls -R /rdw/03/rse-hpc/training/userid/
+[user@cometlogin01(comet) ~] ls -R /rdw/04/rse-training/user/
 ```
 ```output
-/rdw/03/rse-hpc/training/userid/:
+/rdw/04/rse-training/user/:
 TestDir  testfile1  testfile2
 
-/rdw/03/rse-hpc/training/userid/TestDir:
+/rdw/04/rse-training/user/TestDir:
 testfile1  testfile2
 
 ```
@@ -187,7 +189,7 @@ What command would best for backing up a large amount of data from Comet to RDW?
 
 :::solution
 ```bash
-[userid@login01 ~]$ rsync -rltv testDir/ /rdw/03/rse-hpc/training/userid
+[user@login01 ~]$ rsync -rltv testDir/ /rdw/04/rse-training/user
 ```
 
 The `-a` option preserves permissions, this is why we saw group modification errors above.  For Comet and RDW, replace `-av` with `-rltv`    
