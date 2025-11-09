@@ -200,15 +200,21 @@ What command would best for backing up a large amount of data from Comet to RDW?
 
 :::solution
 ```bash
-[`r config$remote$user`@login01 ~]$ rsync -rltv testDir/ /rdw/04/rse-training/`r config$remote$user`
+[`r config$remote$user`@login01 ~]$ rsync -rltv --inplace --size-only DataDir /rdw/04/rse-training/`r config$remote$user`/
 ```
 
-The `-a` option preserves permissions, this is why we saw group modification errors above.  For Comet and RDW, replace `-av` with `-rltv`    
-`-r` = recurse through subdirectories    
-`-l` = copy symlinks    
-`-t` = preserve timestamps   
-`-v` = verbose    
+--inplace - saves resources by not creating temporary files
+--size-only - saves time by only checking whether a file's size has changed (and not its last-modified time) 
+
+ 
 :::
+
+see `man rsync` and https://rsync.samba.org/ for more examples
+--delete is an option that is very useful for tidying up when files have been duplicated.  However it should be used with care!  
+Perhaps a collaborator has placed additional files in the directory you are syncing to.  
+Use --dry-run --progress --stats to check before you run
+Accidental deletions on RDW can be rolled back using Windows File Explorer.  Log a ticket with NUIT for help with rollback.
+
 :::
 
 :::challenge
@@ -217,14 +223,14 @@ The `-a` option preserves permissions, this is why we saw group modification err
 :::solution
 Try out a dry run:
 ```bash
-rsync --dry-run -rltv --inplace --itemize-changes --progress --stats --whole-file --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log1
+rsync --dry-run -rltv --inplace --itemize-changes --progress --stats  --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log1
 ```
 Run ‘for real’:
 ```bash
-rsync -rltv --inplace --itemize-changes --progress --stats --whole-file --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log2
+rsync -rltv --inplace --itemize-changes --progress --stats  --size-only /nobackup/myusername/source /rdw/path/to/my/share/destination/ 2>&1 | tee /home/myusername/meaningful-log-name.log2
 ```
 
-- `--inplace --whole-file --size-only` speed up transfer and prevent rsync filling up space with a large temporary directory    
+- `--inplace  --size-only` speed up transfer and prevent rsync filling up space with a large temporary directory    
 - `--itemize-changes --progress --stats` for more informative output    
 - Remember `|` from the Unix Shell workshop?    
  `| tee` sends output both to the screen and to a log file    
