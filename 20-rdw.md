@@ -33,17 +33,25 @@ User installed software should be in your home directory
 Because `/rdw` is a mounted filesystem, we can use `cp` instead of `scp`:
 
 ```bash
+[user@cometlogin01(comet) ~] pwd
+```
+```output
+/mnt/nfs/home/user
+```
+
+```bash
+[user@cometlogin01(comet) ~] touch file.txt
 [user@cometlogin01(comet) ~] ls /rdw/04/rse-training/
 [user@cometlogin01(comet) ~] mkdir /rdw/04/rse-training/user
 [user@cometlogin01(comet) ~] cp file.txt /rdw/04/rse-training/user/
 [user@cometlogin01(comet) ~] cd /rdw/04/rse-training/user/
-[user@cometlogin01(comet) ~] pwd
+[user@cometlogin02(comet) rse-training]$ pwd
 ```
 ```output
 /rdw/04/rse-training/user
 ```
 ```bash
-[user@cometlogin01(comet) ~] ls
+[user@cometlogin02(comet) rse-training]$ ls
 ```
 ```output
 file.txt
