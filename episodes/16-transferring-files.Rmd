@@ -379,13 +379,10 @@ completeness.
 With `scp`, a trailing slash on the target directory is optional, and has no effect.
 A trailing slash on a source directory is important for other commands, like `rsync`.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 
 <!-- commented out rsync and Filezilla because rsync is introduced in RDW section and rsync is difficult if not impossible from an off-campus laptop
 
-
-
+:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## A Note on `rsync`
 
