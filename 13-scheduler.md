@@ -179,6 +179,7 @@ name of a job. Add an option to the script:
 
 ```bash
 #!/bin/bash
+#SBATCH --account=comet_training
 #SBATCH --partition=short_free
 #SBATCH --job-name=hello-world
 
@@ -254,6 +255,7 @@ for it on the cluster.
 
 ```bash
 #!/bin/bash
+#SBATCH --account=comet_training
 #SBATCH --partition=short_free
 #SBATCH --job-name=long_job
 #SBATCH -t 00:01 # timeout in HH:MM
@@ -285,6 +287,7 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 #!/bin/bash
+#SBATCH --account=comet_training
 #SBATCH --partition=short_free
 #SBATCH --job-name=long_job
 #SBATCH -t 00:01 # timeout in HH:MM
@@ -437,7 +440,7 @@ went wrong with a previous job. Fortunately, Slurm makes it
 easy to start an interactive job with `srun`:
 
 ```bash
-[user@cometlogin01(comet) ~] srun --partition=short_free --pty bash
+[user@cometlogin01(comet) ~] srun --partition=--account=comet_training short_free --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
