@@ -180,6 +180,7 @@ name of a job. Add an option to the script:
 
 ```bash
 `r config$remote$bash_shebang`
+`r config$sched$comment` --account=comet_training
 `r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
 `r config$sched$comment` `r config$sched$flag$name`hello-world
 
@@ -255,6 +256,7 @@ for it on the cluster.
 
 ```bash
 `r config$remote$bash_shebang`
+`r config$sched$comment` --account=comet_training
 `r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
 `r config$sched$comment` `r config$sched$flag$name`long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
@@ -286,6 +288,7 @@ wall time, and attempt to run a job for two minutes.
 
 ```bash
 `r config$remote$bash_shebang`
+`r config$sched$comment` --account=comet_training
 `r config$sched$comment` `r config$sched$flag$queue``r config$sched$partition`
 `r config$sched$comment` `r config$sched$flag$name`long_job
 `r config$sched$comment` `r config$sched$flag$time` 00:01 # timeout in HH:MM
@@ -438,7 +441,7 @@ went wrong with a previous job. Fortunately, `r config$sched$name` makes it
 easy to start an interactive job with ``r config$sched$interactive``:
 
 ```bash
-`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$queue``r config$sched$partition` --pty bash
+`r config$remote$prompt` `r config$sched$interactive` `r config$sched$flag$queue`--account=comet_training `r config$sched$partition` --pty bash
 ```
 
 You should be presented with a bash prompt. Note that the prompt will likely
